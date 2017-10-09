@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
 
 import 'styles/pages/OrderPage.scss';
 
-class OrderPage extends Component {
+export default class OrderPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -194,8 +193,3 @@ class OrderPage extends Component {
     </div>;
   }
 }
-
-export default connect(
-  state => ({}),
-  {}
-)(OrderPage);
