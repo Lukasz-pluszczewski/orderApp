@@ -1,0 +1,79 @@
+// typography
+$baseFontSize: 18px;
+
+// breakpoints
+$mobileRes: 768px;
+$tabletRes: 992px;
+$monitorRes: 1200px;
+
+$mobile: (max-width: $mobileRes - 1px);
+$tablet: (min-width: $mobileRes) and (max-width: $tabletRes - 1px);
+$smallMonitor: (min-width: $tabletRes) and (max-width: $monitorRes - 1px);
+$largeMonitor: (min-width: $monitorRes);
+
+$mobileDrawerBreakPoint: $monitorRes;
+$mobileDrawerQuery: (max-width: $mobileDrawerBreakPoint);
+
+@mixin mobile {
+  @media #{$mobile} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tablet} {
+    @content;
+  }
+}
+
+@mixin smallMonitor {
+  @media #{$smallMonitor} {
+    @content;
+  }
+}
+
+@mixin largeMonitor {
+  @media #{$largeMonitor} {
+    @content;
+  }
+}
+
+@mixin mobileDrawerMedia {
+  @media #{$mobileDrawerQuery} {
+    @content;
+  }
+}
+
+$tinySpacing: .2em;
+$smallSpacing: .5em;
+$standardSpacing: 1em;
+$largeSpacing: 2em;
+
+// colors
+$lighterGrey: #fafafa;
+$lightGrey: #f3f3f3;
+$grey: #cacaca;
+$darkGrey: #7f7f7f;
+$white: #ffffff;
+$black: #000000;
+$lightText: $white;
+$darkText: #000000;
+$disabledText: $grey;
+$primary: #2c446a;
+$primaryDark: #08122c;
+$accent: #55d7ff;
+$errorColor: #db2828;
+$errorColorDark: #b32525;
+
+$topbarShadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.2);
+@function inputShadow($color) {
+  @return 0 0 5px $color;
+}
+@function inputFocusShadow($color) {
+  @return 0 0 10px 2px $color;
+}
+
+$faded-input-text-color: $grey;
+
+// layout
+$sidebarWidth: 13em;

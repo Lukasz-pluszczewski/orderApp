@@ -1,0 +1,51 @@
+@import "../variables";
+
+$normalButtonPaddingLeftRight: $standardSpacing;
+$normalButtonPaddingTopBottom: $smallSpacing;
+
+.Button {
+  outline: none;
+  appearance: none;
+  text-decoration: none;
+
+  display: inline-block;
+  position: relative;
+  border: none;
+  background: $primary;
+  color: $lightText;
+  text-align: center;
+  padding: $normalButtonPaddingTopBottom $normalButtonPaddingLeftRight;
+  cursor: pointer;
+
+  &.Button--disabled {
+    background: $darkGrey;
+    color: $disabledText;
+  }
+  &:active {
+    color: $grey;
+  }
+  &.Button--loading {
+    padding-right: $normalButtonPaddingLeftRight * 2;
+    .Button__loadingIcon {
+      margin: 0 $normalButtonPaddingLeftRight / 2;
+      position: absolute;
+      right: 0;
+    }
+  }
+  &.Button--withIcon {
+    padding-left: $normalButtonPaddingLeftRight * 2;
+    .Button__Icon {
+      margin: 0 $normalButtonPaddingLeftRight / 2;
+      position: absolute;
+      left: 0;
+    }
+    &.Button--iconRight {
+      padding-right: $normalButtonPaddingLeftRight * 2;
+      padding-left: $normalButtonPaddingLeftRight;
+      .Button__Icon {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}

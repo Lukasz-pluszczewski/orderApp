@@ -1,0 +1,55 @@
+@import "../variables";
+
+$normalSelectPadding: $smallSpacing;
+$arrowSize: 0.4em;
+$arrowColor: $primaryDark;
+
+.Select {
+  position: relative;
+  padding: $smallSpacing 0 0 0;
+  margin: $smallSpacing 0;
+  .Select__select {
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: inputShadow($primary);
+    transition: box-shadow .2s;
+    padding: $normalSelectPadding;
+    &:focus {
+      box-shadow: inputFocusShadow($primary);
+    }
+  }
+  .Select__label {
+    display: block;
+    margin-bottom: $tinySpacing;
+  }
+  .Select__error {
+    height: $standardSpacing;
+    color: $errorColor;
+    ul {
+      li {
+
+      }
+    }
+  }
+  &.Select--fullWidth {
+    width: 100%;
+    .Select__select {
+      width: 100%;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: ( 2 * $standardSpacing ) + $smallSpacing + $tinySpacing;
+    right: $standardSpacing;
+
+    width: 0;
+    height: 0;
+    border-left: $arrowSize solid transparent;
+    border-right: $arrowSize solid transparent;
+    border-top: $arrowSize solid $arrowColor;
+
+    pointer-events: none;
+  }
+}

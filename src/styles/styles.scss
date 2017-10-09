@@ -1,0 +1,28 @@
+/* Variables */
+@import "variables";
+
+/* Styles */
+html {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: $baseFontSize;
+  font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-smoothing: inherit;
+}
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input, textarea, select, button {
+  font-size: inherit;
+}

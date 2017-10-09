@@ -1,0 +1,34 @@
+.Order {
+  margin: 2em;
+  .Order__section {
+    margin: 1em 0;
+    border-bottom: 1px solid lightgrey;
+  }
+
+  .Order__group {
+    .Order__item {
+      margin-left: 1em;
+      .Order__itemField {
+        &.Order__personItem {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  .Order__item {
+    .Order__itemField {
+      margin-right: 0.5em;
+      &.Order__personItem {
+        font-weight: bold;
+      }
+    }
+    .Button {
+      margin: 0.1em;
+      padding: 0.1em;
+    }
+  }
+  h3 {
+    margin-bottom: 0.5em;
+  }
+}

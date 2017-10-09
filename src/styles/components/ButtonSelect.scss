@@ -1,0 +1,35 @@
+@import "../variables";
+
+.ButtonSelect {
+  .ButtonSelect__label {
+    display: block;
+    margin-bottom: $tinySpacing;
+  }
+  .ButtonSelect__buttons {
+    display: flex;
+    margin: 0 (-$smallSpacing);
+    .ButtonSelect__Button {
+      margin: 0 $smallSpacing;
+      background: $grey;
+      &.ButtonSelect__Button--selected {
+        background: $primary;
+      }
+    }
+  }
+  .ButtonSelect__error {
+    height: $standardSpacing;
+    color: $errorColor;
+    ul {
+      li {
+
+      }
+    }
+  }
+  &.ButtonSelect--fullWidth {
+    .ButtonSelect__buttons {
+      .ButtonSelect__Button {
+        flex-grow: 1;
+      }
+    }
+  }
+}

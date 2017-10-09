@@ -1,0 +1,103 @@
+@import "../variables";
+
+$normalInputPadding: $smallSpacing;
+
+.Input {
+  position: relative;
+  padding: $smallSpacing 0 0 0;
+  margin: $smallSpacing 0;
+  .Input__input {
+    appearance: none;
+    border: none;
+    outline: none;
+    box-shadow: inputShadow($primary);
+    transition: box-shadow .2s;
+    padding: $normalInputPadding;
+    &:focus {
+      box-shadow: inputFocusShadow($primary);
+    }
+    &::-webkit-calendar-picker-indicator {
+      display: none; // I removed arrow for input as it can be misinterpreted as select
+    }
+  }
+  .Input__label {
+    display: block;
+    margin-bottom: $tinySpacing;
+  }
+  .Input__error {
+    min-height: 1.5 * $standardSpacing;
+    color: $errorColor;
+    ul {
+      li {
+
+      }
+    }
+  }
+
+  &.Input--error {
+    .Input__input {
+      box-shadow: inputShadow($errorColor);
+      &:focus {
+        box-shadow: inputFocusShadow($errorColor);
+      }
+    }
+  }
+  &.Input--loading {
+    .Input__input {
+      padding-right: $largeSpacing;
+    }
+    .Input__loadingIcon {
+      margin: $normalInputPadding;
+      position: absolute;
+      right: 0;
+    }
+  }
+  &.Input--withIcon {
+    .Input__input {
+      padding-left: $largeSpacing;
+    }
+    .Input__Icon {
+      margin: $normalInputPadding;
+      position: absolute;
+      left: 0;
+    }
+    &.Input--iconRight {
+      .Input__input {
+        padding-right: $largeSpacing;
+        padding-left: $normalInputPadding
+      }
+      .Input__Icon {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+  &.Input--fullWidth {
+    width: 100%;
+    .Input__input {
+      width: 100%;
+    }
+  }
+}
+
+.rc-tooltip {
+  font-size: inherit;
+  .rc-tooltip-content {
+    .rc-tooltip-arrow {
+      border-right-color: $errorColor;
+    }
+    .rc-tooltip-inner {
+      padding: $standardSpacing;
+      border: 1px solid $errorColor;
+      color: $errorColor;
+
+      .Input__tooltipContent {
+        padding-left: 0;
+        margin: 0;
+        li {
+          list-style: none;
+        }
+      }
+    }
+  }
+}
