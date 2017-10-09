@@ -4,8 +4,6 @@ import _ from 'lodash';
 import classnames from 'classnames';
 import { Icon } from 'react-fa';
 
-import Tooltip from 'components/Tooltip';
-
 import 'styles/components/Input.scss';
 
 const inputConfig = {
@@ -142,29 +140,20 @@ class Input extends Component {
           this.props.className
         )}>
         {this.props.label ? <label className="Input__label" htmlFor={id}>{this.props.label}</label> : null}
-        <Tooltip
-          visible={!!this.props.errorDetails}
-          animation="zoom"
-          trigger={[]}
-          overlay={<ul className="Input__tooltipContent">
-            {this.props.errorDetails && this.props.errorDetails.map(detail => (<li>{detail}</li>))}
-          </ul>}
-        >
-          <input
-            id={id}
-            ref={input => this.inputRef = input}
-            list={this.props.options ? `${id}list` : null}
-            className="Input__input"
-            name={this.props.name}
-            type={this.props.type}
-            value={this.props.value}
-            checked={this.props.checked}
-            disabled={this.props.disabled}
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            onKeyDown={this.props.onKeyDown}
-          />
-        </Tooltip>
+        <input
+          id={id}
+          ref={input => this.inputRef = input}
+          list={this.props.options ? `${id}list` : null}
+          className="Input__input"
+          name={this.props.name}
+          type={this.props.type}
+          value={this.props.value}
+          checked={this.props.checked}
+          disabled={this.props.disabled}
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+          onKeyDown={this.props.onKeyDown}
+        />
 
         {this.props.icon ? this.renderIcon() : null}
         {this.props.loading ? <Icon className="Input__loadingIcon" name={inputConfig.loadingIconName} spin /> : null}
