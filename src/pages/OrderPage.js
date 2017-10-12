@@ -127,7 +127,7 @@ export default class OrderPage extends Component {
 
   renderGrouped(elements, by, fields = ['person', 'name', 'price'], button = true) {
     let correction = by === 'person' ? parseFloat(this.state.delivery || 0) - parseFloat(this.state.discount || 0) : 0;
-    correction = correction / (elements.length || 1);
+    correction = correction / (_.size(_.groupBy(elements, by)));
 
     return _.map(_.groupBy(elements, by), (group, groupName) => (
       <div key={groupName} className="Order__group">
