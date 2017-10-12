@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -14,6 +15,8 @@ export default class OrderPage extends Component {
       newElementName: '',
       newElementPrice: '',
       json: '',
+      discount: '',
+      delivery: ''
     };
     this.addJson = this.addJson.bind(this);
     this.add = this.add.bind(this);
@@ -123,12 +126,21 @@ export default class OrderPage extends Component {
   }
 
   renderGrouped(elements, by, fields = ['person', 'name', 'price'], button = true) {
-    return _.map(_.groupBy(elements, by), (group, groupName) => (<div key={groupName} className="Order__group">
-      <div><b>{groupName}</b>{`: (${group.length}) ${this.formatCurrency(this.getSum(group))}`}</div>
-      <div>
-        {group.map(this.renderItem(fields, button))}
+    let correction = by === 'person' ? parseFloat(this.state.delivery || 0) - parseFloat(this.state.discount || 0) : 0;
+    correction = correction / (elements.length || 1);
+
+    return _.map(_.groupBy(elements, by), (group, groupName) => (
+      <div key={groupName} className="Order__group">
+        <div>
+          <b>{groupName}</b>
+          {`: (${group.length}) ${this.formatCurrency(this.getSum(group))}`}
+          {correction ? ` -> ${this.formatCurrency(this.getSum(group) + correction)}` : null}
+        </div>
+        <div>
+          {group.map(this.renderItem(fields, button))}
+        </div>
       </div>
-    </div>))
+    ));
   }
 
   render () {
@@ -138,6 +150,18 @@ export default class OrderPage extends Component {
           <textarea value={this.state.json} onChange={e => this.setState({ json: e.target.value })} />
         </div>
         <Button onClick={this.addJson}>Parse</Button>
+      </div>
+      <div className="Order__section">
+        <Input
+          value={this.state.discount}
+          onChange={e => this.setState({ discount: e.target.value })}
+          label="Discount"
+        />
+        <Input
+          value={this.state.delivery}
+          onChange={e => this.setState({ delivery: e.target.value })}
+          label="Delivery"
+        />
       </div>
       <div className="Order__section">
         <h3>Enter order:</h3>
