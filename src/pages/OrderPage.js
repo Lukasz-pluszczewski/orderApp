@@ -143,7 +143,7 @@ export default class OrderPage extends Component {
     ));
   }
 
-  render () {
+  render() {
     return <div className="Order">
       <div className="Order__section">
         <div>
