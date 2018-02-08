@@ -27,6 +27,7 @@ export default class OrderPage extends Component {
     this.getPersons = this.getPersons.bind(this);
     this.getNames = this.getNames.bind(this);
     this.getPrice = this.getPrice.bind(this);
+    this.getCorrection = this.getCorrection.bind(this);
   }
 
   componentWillMount() {
@@ -83,8 +84,11 @@ export default class OrderPage extends Component {
       cb();
     };
   }
+  getCorrection() {
+    return parseFloat(this.state.delivery || 0) - parseFloat(this.state.discount || 0);
+  }
   getSum(elements) {
-    return elements.reduce((sum, el) => sum + (parseFloat(el.price.replace(',', '.'))), 0);
+    return elements.reduce((sum, el) => sum + (parseFloat(el.price.replace(',', '.'))), 0) - this.getCorrection();
   }
   formatCurrency(value, currency = 'zł') {
     return `${parseFloat(value).toFixed(2)}${currency}`;
@@ -126,7 +130,7 @@ export default class OrderPage extends Component {
   }
 
   renderGrouped(elements, by, fields = ['person', 'name', 'price'], button = true) {
-    let correction = by === 'person' ? parseFloat(this.state.delivery || 0) - parseFloat(this.state.discount || 0) : 0;
+    let correction = by === 'person' ? this.getCorrection() : 0;
     correction = correction / (_.size(_.groupBy(elements, by)));
 
     return _.map(_.groupBy(elements, by), (group, groupName) => (
