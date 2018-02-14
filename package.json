@@ -18,7 +18,8 @@
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rm -rf ./dist",
     "prebuild": "npm run clean-dist",
-    "build": "node tools/build.js"
+    "build": "node tools/build.js",
+    "heroku-postbuild": "npm run build"
   },
   "author": "Łukasz Pluszczewski",
   "license": "MIT",
