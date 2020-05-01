@@ -19,7 +19,9 @@
     "remove-dist": "rm -rf ./dist",
     "prebuild": "npm run clean-dist",
     "build": "node tools/build.js",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Łukasz Pluszczewski",
   "license": "MIT",
@@ -66,11 +68,13 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
     "webpack-dev-middleware": "^1.11.0",
-    "webpack-hot-middleware": "^2.18.0"
+    "webpack-hot-middleware": "^2.18.0",
+    "snyk": "^1.316.1"
   },
   "keywords": [],
   "repository": {
     "type": "git",
     "url": ""
-  }
+  },
+  "snyk": true
 }
