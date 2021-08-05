@@ -52,7 +52,7 @@
     "html-webpack-plugin": "^2.29.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.4",
-    "node-sass": "^4.5.3",
+    "node-sass": "^5.0.0",
     "postcss-loader": "^2.0.6",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
